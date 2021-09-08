@@ -510,6 +510,7 @@ func (sched *Scheduler) scheduleOne(ctx context.Context) {
 		return
 	}
 	if sched.skipPodSchedule(fwk, pod) {
+		sched.SchedulingQueue.DeleteNominatedPodIfExists(pod)
 		return
 	}
 
